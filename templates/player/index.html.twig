@@ -1,8 +1,14 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <style type = "text/css">
+        html, body {
+            height: 100%;
+        }
         body {
-            background-color: black;
+            background-image: url("{{ asset('images/welcome.gif') }}");
+			background-repeat: no-repeat;
+            background-position: center;
+			background-size: cover;
         }
     </style>
 
