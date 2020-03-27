@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="welcome-box">
-        <ul>
-            <li><a href = "{{ path('app_login') }}">Sign In</a></li>
-            <li><a href = "{{ path('app_register') }}">Make an account</a></li>
-        </ul>
+    <div class="container welcome">
+        <div class = "row justify-content-center">
+            <div class = "col-auto"><a href = "{{ path('app_login') }}">Sign In</a></div>
+            <div class = "col-auto"><a href = "{{ path('app_register') }}">Make an account</a></div>
+        </div>
     </div>
 {% endblock %}
