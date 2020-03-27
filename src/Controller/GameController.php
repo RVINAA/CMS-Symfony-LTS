@@ -14,17 +14,12 @@ class GameController extends AbstractController
      */
     public function index()
     {
-        $this->test($this);
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('welcome');
+        }
 
         return $this->render('game/index.html.twig', [
             'controller_name' => 'GameController',
         ]);
     }
-
-    public function test($ref) {
-        if (!$ref->getUser()) {
-            return $ref->redirectToRoute('welcome');
-        }
-    }
-
 }
