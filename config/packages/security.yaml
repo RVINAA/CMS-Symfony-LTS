@@ -1,4 +1,5 @@
 security:
+    access_denied_url: /
     encoders:
         App\Entity\Player:
             algorithm: auto
@@ -23,7 +24,7 @@ security:
             logout:
                 path: app_logout
                 # where to redirect after logout
-                # target: app_any_route
+                target: /
             remember_me:
                 secret:   '%kernel.secret%'
                 lifetime: 604800 # 1 week in seconds
@@ -39,4 +40,3 @@ security:
     access_control:
          # - { path: ^/(welcome|login|register)$, role: IS_AUTHENTICATED_ANONYMOUSLY, allow_if: "not has_role('ROLE_USER')" }
          - { path: ^/housekeeping, roles: ROLE_ADMIN }
-         #- { path: ^/, role: ROLE_USER }
