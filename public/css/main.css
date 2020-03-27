@@ -4,10 +4,53 @@
 }
 
 /* Welcome */
-.welcome > div > div {
-    background-color: aqua;
-    border: 1px solid;
-    border-radius: 5px;
-    padding: 10px;
+.welcome {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    margin: auto;
 }
 
+.welcome > div {
+    flex: 0 1 300px;
+    transition: all 800ms;
+    text-align: center;
+    border-radius: 3px;
+    border: 1px solid;
+    margin: 10px;
+}
+
+.welcome > div:first-of-type {
+    border-color: red;
+}
+
+.welcome > div:last-of-type {
+    border-color: green;
+}
+
+.welcome > div > a {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2em;
+    text-decoration: none;
+    transition: all 800ms;
+}
+
+.welcome > div:first-of-type > a {
+    color: red;
+}
+
+.welcome > div:last-of-type > a {
+    color: green;
+}
+
+.welcome > div:first-of-type:hover {
+    background-color: red;
+}
+
+.welcome > div:last-of-type:hover {
+    background-color: green;
+}
+
+.welcome > div:hover > a {
+    font-weight: bold;
+    color: black;
+}
