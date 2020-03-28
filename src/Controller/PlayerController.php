@@ -18,8 +18,6 @@ class PlayerController extends AbstractController
             return $this->redirectToRoute('games');
         }
 
-        return $this->render('player/index.html.twig', [
-            'controller_name' => 'PlayerController',
-        ]);
+        return $this->render('player/welcome.html.twig', []);
     }
 }

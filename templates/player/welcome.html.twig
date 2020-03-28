@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/welcome.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+
+    <img class = "logotipo-welcome" src = "{{ asset('images/logo.png') }}"/>
+    <div class="d-flex justify-content-center align-content-center flex-wrap welcome">
+        <div class = "p-2">Login</div>
+        <div class = "p-2">Register</div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script type = "text/javascript">
+
+        document.querySelector('.welcome > div:first-of-type').addEventListener('click', () => {
+            window.location.href = "{{ path('app_login') }}";
+            return false;
+        });
+
+        document.querySelector('.welcome > div:last-of-type').addEventListener('click', () => {
+            window.location.href = "{{ path('app_register') }}";
+            return false;
+        });
+
+    </script>
+
+{% endblock %}

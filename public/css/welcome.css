@@ -37,16 +37,27 @@
     margin: 0;
 }
 
+html, body {
+    height: 100%;
+}
+
+body {
+    background-image: url("../images/welcome.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
 /* Welcome */
 .logotipo-welcome {
-    animation: bounce 3s;
+    animation: bounce 1300ms;
     text-align: center;
     padding: 40px 0;
     display: block;
     margin: auto;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 760px) {
     .logotipo-welcome {
         padding: 40px;
         margin: 0;
@@ -54,54 +65,41 @@
 }
 
 .welcome {
-    position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
+    position: absolute;
     margin: auto;
 }
 
 .welcome > div {
+    font-family: 'Courier New', Courier, monospace;
     transition: all 300ms;
+    text-decoration: none;
     text-align: center;
     border-radius: 3px;
     border: 1px solid;
-    flex: 0 1 300px;
+    font-size: 1.2em;
+    flex: 0 1 360px;
     margin: 10px;
 }
 
 .welcome > div:first-of-type {
-    border-color: red;
+    border-color: white;
+    color: white;
 }
 
 .welcome > div:last-of-type {
-    border-color: green;
-}
-
-.welcome > div > a {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1.2em;
-    text-decoration: none;
-    transition: all 300ms;
-}
-
-.welcome > div:first-of-type > a {
-    color: red;
-}
-
-.welcome > div:last-of-type > a {
-    color: green;
+    border-color: #DADA06;
+    color: #DADA06;
 }
 
 .welcome > div:first-of-type:hover {
+    background-color: white;
     transform: scale(1.06);
-    background-color: red;
+    color: black;
 }
 
 .welcome > div:last-of-type:hover {
+    background-color: #DADA06;
     transform: scale(1.06);
-    background-color: green;
-}
-
-.welcome > div:hover > a {
-    font-weight: bold;
     color: black;
 }
