@@ -88,6 +88,7 @@ body {
 
 .login > form > input {
     margin-bottom: 10px;
+    user-select: text;
     height: 30px;
 }
 
