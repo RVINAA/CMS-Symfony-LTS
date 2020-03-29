@@ -1,35 +1,48 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link href = "{{ asset('css/login.css') }}" type = "text/css" rel = "stylesheet" />
+{% endblock %}
+
 {% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
+    <div class = "d-flex flex-column justify-content-center align-content-center login">
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputUsername">Username</label>
-    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" required>
+        <form method = "post">
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
-    
-    <div class="checkbox mb-3">
-        <label>
-            <input type="checkbox" name="_remember_me"> Remember me
-        </label>
+            {% if error %}
+                <div class = "alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            <label for = "inputUsername">Username</label>
+            <input type = "text" value = "{{ last_username }}" name = "username" id = "inputUsername" class = "form-control" required autofocus>
+            <label for = "inputPassword">Password</label>
+            <input type = "password" name = "password" id = "inputPassword" class = "form-control" required>
+
+            <input type = "hidden" name = "_csrf_token" value = "{{ csrf_token('authenticate') }}">
+
+            <label class="d-flex"><input type = "checkbox" name = "_remember_me"> Remember me</label>
+
+            <button type = "submit">Sign in</button>
+        </form>
+
+        <div class = "d-flex justify-content-center align-items-center">Register</div>
+
     </div>
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
-</form>
 {% endblock %}
+
+{% block javascripts %}
+
+    <script type = "text/javascript">
+
+        document.querySelector('.login > div').addEventListener('click', () => {
+            window.location.href = "{{ path('app_register') }}";
+            return false;
+        });
+
+    </script>
+
+{% endblock %}
+
