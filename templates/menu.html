@@ -1,8 +1,11 @@
 <header class = "d-flex">
     <img src = "{{ asset('images/logo.png') }}" />
     <ul>
-        <li><a href ="#">Games</a></li>
+        <li><a href ="{{ path('games') }}">Games</a></li>
         <li><a href ="#">Scores</a></li>
-        <li><a href ="#">Housekeeping</a></li>
+        {% if is_granted('ROLE_ADMIN') %}
+            <li><a href ="{{ path('easyadmin') }}">Housekeeping</a></li>
+        {% endif %}
+        <li><a href ="{{ path('app_logout') }}">Logout</a></li>
     </ul>
 </header>
