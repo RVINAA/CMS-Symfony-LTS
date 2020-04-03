@@ -1,11 +1,17 @@
-<header class = "d-flex">
-    <img src = "{{ asset('images/logo.png') }}" />
-    <ul>
-        <li><a href ="{{ path('games') }}">Games</a></li>
-        <li><a href ="#">Scores</a></li>
+<header class = "d-flex align-items-center justify-content-between flex-wrap">
+
+    <a href ="{{ path('games') }}"><img src = "{{ asset('images/logo.png') }}" /></a>
+
+    <label for = "menu"><img src = "{{ asset('images/menu-icon.png') }}" /></label>
+    <input type = "checkbox" id = "menu">
+
+    <nav>
         {% if is_granted('ROLE_ADMIN') %}
-            <li><a href ="{{ path('easyadmin') }}">Housekeeping</a></li>
+            <a style = "color: red;" href ="{{ path('easyadmin') }}">Admin HK</a>
         {% endif %}
-        <li><a href ="{{ path('app_logout') }}">Logout</a></li>
-    </ul>
+
+        <a href ="#">Settings</a>
+        <a href ="{{ path('app_logout') }}">Sign Out</a>
+    </nav>
+
 </header>
