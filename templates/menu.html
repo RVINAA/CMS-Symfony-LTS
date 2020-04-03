@@ -7,7 +7,7 @@
 
     <nav>
         {% if is_granted('ROLE_ADMIN') %}
-            <a style = "color: red;" href ="{{ path('easyadmin') }}">Admin HK</a>
+            <a href ="{{ path('easyadmin') }}"><span>Admin HK</span></a>
         {% endif %}
 
         <a href ="#">Settings</a>

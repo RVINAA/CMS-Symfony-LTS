@@ -33,12 +33,8 @@ header > nav > a {
     width: 100%;
 }
 
-#menu:checked ~ nav{
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    flex-basis: 100%;
-    display: flex;
+header > nav > a > span {
+    color: red;
 }
 
 @media (max-width: 579px) {
@@ -52,6 +48,14 @@ header > nav > a {
         text-decoration: none;
         color: #212027;
     }
+
+    #menu:checked ~ nav{
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        flex-basis: 100%;
+        display: flex;
+    }
     
 }
 
@@ -61,7 +65,7 @@ header > nav > a {
         display: none;
     }
 
-    #menu ~ nav {
+    #menu ~ nav, #menu:checked ~ nav {
         flex: 0 1 400px;
         display: flex;
     }
