@@ -7,6 +7,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
+use App\Entity\Game;
+
 class GameController extends AbstractController
 {
     /**
@@ -18,8 +20,10 @@ class GameController extends AbstractController
             return $this->redirectToRoute('welcome');
         }
 
+        $allGames = $this->getDoctrine()->getRepository(Game::class)->findAll();
+
         return $this->render('game/index.html.twig', [
-            'controller_name' => 'GameController',
+            'games' => $allGames 
         ]);
     }
 }

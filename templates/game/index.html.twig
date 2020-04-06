@@ -2,20 +2,15 @@
 
 {% block stylesheets %}
     {{ parent() }}
+    <link href = "{{ asset('css/games.css') }}" type = "text/css" rel = "stylesheet" />
     <link href = "{{ asset('css/menu.css') }}" type = "text/css" rel = "stylesheet" />
 {% endblock %}
 
 {% block body %}
 {% include 'menu.html' %}
 
-    <div class="example-wrapper">
-        <h1>Hello {{ controller_name }}! ✅</h1>
-
-        This friendly message is coming from:
-        <ul>
-            <li>Your controller at <code><a href="{{ '/home/sigma/Escritorio/Proyect/src/Controller/GameController.php'|file_link(0) }}">src/Controller/GameController.php</a></code></li>
-            <li>Your template at <code><a href="{{ '/home/sigma/Escritorio/Proyect/templates/game/index.html.twig'|file_link(0) }}">templates/game/index.html.twig</a></code></li>
-        </ul>
-    </div>
+    {% for game in games %}
+        <p>{{game.name}}<p>
+    {% endfor %}
 
 {% endblock %}
