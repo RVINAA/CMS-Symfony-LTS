@@ -7,10 +7,15 @@
 {% endblock %}
 
 {% block body %}
-{% include 'menu.html' %}
+    {% include 'menu.html' %}
 
-    {% for game in games %}
-        <p>{{game.name}}<p>
-    {% endfor %}
-
+    <div class = "listado d-flex flex-wrap justify-content-center">
+        {% for game in games %}
+            <div>
+                <img src = "{{ asset('images/tetris.jpg ')}}"/>
+                <p>{{ game.name }}</p>
+            </div>
+            {#<div>{{ game.name }}</div>#}
+        {% endfor %}
+    <div>
 {% endblock %}
