@@ -26,4 +26,21 @@ class GameController extends AbstractController
             'games' => $allGames 
         ]);
     }
+
+    /**
+     * @Route("/games/{slug}", name="onegame")
+     */
+    public function game()
+    {
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('welcome');
+        }
+
+        $allGames = $this->getDoctrine()->getRepository(Game::class)->findAll();
+
+        return $this->render('game/index.html.twig', [
+            'games' => $allGames 
+        ]);
+    }
+
 }

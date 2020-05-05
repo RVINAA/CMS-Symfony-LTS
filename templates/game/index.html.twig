@@ -12,10 +12,12 @@
     <div class = "listado d-flex flex-wrap justify-content-center">
         {% for game in games %}
             <div>
-                <img src = "{{ asset('images/tetris.jpg ')}}"/>
-                <p>{{ game.name }}</p>
+                <a href = "{{ path('onegame', {slug: game.getSlug}) }}">
+                    <img src = "{{ asset('images/tetris.jpg ')}}"/>
+                    <p>{{ game.name }}</p>
+                </a>
             </div>
-            {#<div>{{ game.name }}</div>#}
+
         {% endfor %}
     <div>
 {% endblock %}

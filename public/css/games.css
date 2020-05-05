@@ -16,17 +16,22 @@
     width: 100%;
 }
 
+.listado > div > a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
 
-.listado > div > img {
+.listado > div > a > img {
     transition: all 300ms;
     width: 100%;
 }
 
-.listado > div > img:hover {
+.listado > div > a > img:hover {
     transform: scale(1.1);
 }
 
-.listado > div > p {
+.listado > div > a > p {
     font-family: 'Courier New', Courier, monospace;
     text-transform: uppercase;
     background-color: white;
@@ -34,6 +39,7 @@
     position: relative;
     font-size: 1.2em;
     margin-bottom: 0;
+    color: black;
     padding: 4px 0;
     z-index: 2;
 }

@@ -67,6 +67,11 @@ class Game
         return $this;
     }
 
+    public function getSlug(): ?string
+    {
+        return strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $this->name), '-'));
+    }
+
     /**
      * @return Collection|Score[]
      */

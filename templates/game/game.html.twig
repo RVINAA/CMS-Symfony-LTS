@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href = "{{ asset('css/games.css') }}" type = "text/css" rel = "stylesheet" />
+    <link href = "{{ asset('css/menu.css') }}" type = "text/css" rel = "stylesheet" />
+{% endblock %}
+
+{% block body %}
+    {% include 'menu.html' %}
+
+    <div class = "listado d-flex flex-wrap justify-content-center">
+        {% for game in games %}
+            <div>
+                <img src = "{{ asset('images/tetris.jpg ')}}"/>
+                <p>{{ game.name }}</p>
+            </div>
+            {#<div>{{ game.name }}</div>#}
+        {% endfor %}
+    <div>
+{% endblock %}
+
+{% block javascripts %}
+
+    <script type = "text/javascript">
+
+        let juegos = document.querySelectorAll('body > div > div');
+            juegos.forEach(juego => {
+                juego.addEventListener('click', () => {
+                window.location.href = "{{ path('app_login') }}";
+                return false;
+            });
+        });
+        
+    </script>
+
+{% endblock %}
