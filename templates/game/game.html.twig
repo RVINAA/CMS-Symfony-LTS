@@ -2,13 +2,14 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link href = "{{ asset('css/game.css') }}" type = "text/css" rel = "stylesheet" />
     <link href = "{{ asset('css/menu.css') }}" type = "text/css" rel = "stylesheet" />
-
+    <link href = "{{ asset('css/game.css') }}" type = "text/css" rel = "stylesheet" />
     <link href = "{{ asset(cssFile) }}" type = "text/css" rel = "stylesheet" />
 {% endblock %}
 
 {% block body %}
+
     {% include 'menu.html' %}
     {% include indexFile %}
+
 {% endblock %}

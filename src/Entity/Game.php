@@ -24,11 +24,6 @@ class Game
     private $name;
 
     /**
-     * @ORM\Column(type="array")
-     */
-    private $instructions = [];
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Score", mappedBy="game", orphanRemoval=true)
      */
     private $scores;
@@ -56,18 +51,6 @@ class Game
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getInstructions(): ?array
-    {
-        return $this->instructions;
-    }
-
-    public function setInstructions(array $instructions): self
-    {
-        $this->instructions = $instructions;
 
         return $this;
     }

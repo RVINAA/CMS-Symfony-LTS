@@ -28,14 +28,17 @@ class Test extends Fixture
         }
 
         // Juegos Test para hacer la plantilla de la CMS (listado).
-        $gameBase = ['Tetris', ['izq' => 'hacia izq', 'der' => 'derecha', 'ejemplo' => 'cuarentena']];
+        $games = [
+            ['Tetris JS', 'games/tetris-js/img/tetris.jpg'],
+            // Second game...
+        ];
         
-        // No lo he probado, ya que antes tenía un for de ejemplo y no tenia la propiedad img, cuando tenga el tetris adaptado al 100% lo reedito.
-        $game = new Game();
-        $game->setName($gameBase[0].' '.$x);
-        $game->setInstructions($gameBase[1]);
-        $game->setImg('games/tetris-js/img/tetris.jpg');
-        $manager->persist($game);
+        foreach ($games as $data) {
+            $game = new Game();
+            $game->setName($data[0]);
+            $game->setImg($data[1]);
+            $manager->persist($game);
+        }
 
         $manager->flush();
     }
