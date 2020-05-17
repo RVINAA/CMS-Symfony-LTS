@@ -52,7 +52,9 @@ class GameController extends AbstractController
         }
 
         return $this->render('game/game.html.twig', [
-            'game' => $oneGame
+            'game' => $oneGame,
+            'cssFile' => "games/".$oneGame->getSlug()."/css/style.css",
+            'indexFile' => '@games/'.$oneGame->getSlug().'/index.html'
         ]);
     }
 

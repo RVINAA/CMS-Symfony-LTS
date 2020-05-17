@@ -12,8 +12,8 @@
     <div class = "listado d-flex flex-wrap justify-content-center">
         {% for game in games %}
             <div>
-                <a href = "{{ path('onegame', {slug: game.getSlug}) }}">
-                    <img src = "{{ asset('images/tetris.jpg ')}}"/>
+                <a href = "{{ path('onegame', { slug: game.getSlug }) }}">
+                    <img src = "{{ asset( game.img ) }}"/>
                     <p>{{ game.name }}</p>
                 </a>
             </div>
