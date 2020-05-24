@@ -12,22 +12,23 @@ class Test extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        // Usuarios Test.
+        // Test user.
         $users = [
+            ['SIGMA[!]', '1234', ['ROLE_ADMIN'], 'lascortinashuelenaporro@gmail.com'],
             ['admin', '1234', ['ROLE_ADMIN'], 'admin@admin.es'],
             ['user', '1234', ['ROLE_USER'], 'user@user.es']
         ];
 
-        foreach ($users as $datos) {
+        foreach ($users as $data) {
             $user = new Player();
-            $user->setUsername($datos[0]);
-            $user->setPassword(password_hash($datos[1], PASSWORD_DEFAULT));
-            $user->setRoles($datos[2]);
-            $user->setEmail($datos[3]);
+            $user->setUsername($data[0]);
+            $user->setPassword(password_hash($data[1], PASSWORD_DEFAULT));
+            $user->setRoles($data[2]);
+            $user->setEmail($data[3]);
             $manager->persist($user);
         }
 
-        // Juegos Test para hacer la plantilla de la CMS (listado).
+        // Games por testing.
         $games = [
             ['Tetris JS', 'games/tetris-js/img/tetris.jpg'],
             // Second game...
@@ -39,6 +40,22 @@ class Test extends Fixture
             $game->setImg($data[1]);
             $manager->persist($game);
         }
+
+        /*
+        // Scores for testing Tetris.
+        $scores = [
+            ['Tetris JS', 'SIGMA[!]', '420'],
+            ['Tetris JS', 'SIGMA[!]', '160458'],
+            ['Tetris JS', 'SIGMA[!]', '43146']
+        ];
+
+        foreach ($scores as $data) {
+            $score = new Score();
+            $score->setGame($data[0]);
+            $score->setPlayer($data[1]);
+            $score->setScore($data[2]);
+            $manager->persist($score);
+        } */
 
         $manager->flush();
     }

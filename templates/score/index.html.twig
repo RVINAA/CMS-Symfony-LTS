@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href = "{{ asset('css/menu.css') }}" type = "text/css" rel = "stylesheet" />
+{% endblock %}
+
+{% block body %}
+    {% include 'menu.html' %}
+
+
+    {% for data in allScores %}
+        <p>{{ data.player.username }} - {{ data.score }} puntos.</p>
+    {% endfor %}
+
+    
+{% endblock %}
