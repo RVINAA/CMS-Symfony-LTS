@@ -18,7 +18,7 @@
 
         {% for data in allScores %}
             {% if data.score != 0 %}
-                <div class = "row justify-content-between">
+                <div class = "row">
                     <div>#{{ loop.index }}</div> 
                     <div>{{ data.player.username }}</div>
                     <div>{{ data.score }}</div>

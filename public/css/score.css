@@ -18,24 +18,37 @@ body {
 }
 
 .listado > div:first-of-type {
-    background-color: rgba(255, 255, 255, 0.6);
+    background-image: linear-gradient( 122.3deg,  rgba(111,71,133,1) 14.6%, rgba(232,129,166,1) 29.6%, rgba(237,237,183,1) 42.1%, rgba(244,166,215,1) 56.7%, rgba(154,219,232,1) 68.7%, rgba(238,226,159,1) 84.8% );
     border: 1px solid white;
     margin-bottom: 10px;
     text-align: center;
-    font-weight: bold;
     color: #212027;
+    font-weight: bold;
     padding: 10px 0;
 }
 
 .row {
-    background-color: rgba(33, 32, 39, 0.6);
     text-align: center;
     margin-right: 0;
     margin-left: 0;
 }
 
 .row > div {
+    background-color: rgba(33, 32, 39, 0.6);
     border: 1px solid white;
+}
+
+
+.row:nth-of-type(2) > div {
+    background-color: rgba(239, 184, 16, 0.9);
+}
+
+.row:nth-of-type(3) > div {
+    background-color: rgba(138, 149, 151, 0.9);
+}
+
+.row:nth-of-type(4) > div {
+    background-color: rgba(118, 60, 40, 0.9);
 }
 
 .row > div:first-of-type {
