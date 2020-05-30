@@ -3,15 +3,29 @@
 {% block stylesheets %}
     {{ parent() }}
     <link href = "{{ asset('css/menu.css') }}" type = "text/css" rel = "stylesheet" />
+    <link href = "{{ asset('css/score.css') }}" type = "text/css" rel = "stylesheet" />
 {% endblock %}
 
 {% block body %}
     {% include 'menu.html' %}
 
+    <div class = "stars"></div>
+    <div class = "stars2"></div>
+    <div class = "stars3"></div>
 
-    {% for data in allScores %}
-        <p>{{ data.player.username }} - {{ data.score }} puntos.</p>
-    {% endfor %}
+    <div class = "listado d-flex flex-column">
+        <div>HIGH SCORES</div>
 
+        {% for data in allScores %}
+            {% if data.score != 0 %}
+                <div class = "row justify-content-between">
+                    <div>#{{ loop.index }}</div> 
+                    <div>{{ data.player.username }}</div>
+                    <div>{{ data.score }}</div>
+                </div>
+            {% endif %}
+        {% endfor %}
+
+    </div>
     
 {% endblock %}
