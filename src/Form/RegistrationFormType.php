@@ -34,6 +34,10 @@ class RegistrationFormType extends AbstractType
                         'maxMessage' => 'Username must have a maximum of {{ limit }} characters.',
                     ]),
                 ],
+                'attr' => [
+                    'class' => 'form-control',
+                    'autofocus' => true,
+                ],
             ])
             ->add('email', EmailType::class, [
                 'required' => true,
@@ -43,11 +47,19 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Please enter an email.',
                     ]),
                 ],
+                'attr' => [
+                    'class' => 'form-control',
+                ],
             ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'The password fields must match',
-                'options' => ['attr' => ['class' => 'password-field']],
+                'options' => [
+                    'attr' => [
+                        'class' => 'password-field',
+                        'class' => 'form-control'
+                        ]
+                ],
                 'required' => true,
                 'first_options'  => ['label' => 'Password'],
                 'second_options' => ['label' => 'Verify your Password'],
