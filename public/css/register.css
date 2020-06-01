@@ -1,3 +1,9 @@
+@import 'bounce-effects.css';
+
+.alert {
+    animation: bounceIn 0.75s;
+}
+
 * {
     user-select: none;
     padding: 0;

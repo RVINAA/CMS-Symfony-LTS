@@ -19,25 +19,15 @@ body {
 }
 
 /* Welcome */
-.logotipo-welcome {
-    animation: bounce 1300ms;
-    text-align: center;
-    padding: 40px 0;
-    display: block;
-    margin: auto;
-}
-
-@media (min-width: 760px) {
-    .logotipo-welcome {
-        padding: 40px;
-        margin: 0;
-    }
-}
 
 .welcome {
-    top: 0; left: 0; right: 0; bottom: 0;
-    position: absolute;
+    max-width: 500px;
     margin: auto;
+    height: 100%;
+}
+
+.welcome > img {
+    animation: bounce 1300ms;
 }
 
 .welcome > div {
@@ -53,6 +43,7 @@ body {
 
 .welcome > div:first-of-type {
     border-color: white;
+    margin-top: 7px;
     color: white;
 }
 

@@ -53,7 +53,7 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'invalid_message' => 'The password fields must match',
+                'invalid_message' => 'The password fields must match.',
                 'options' => [
                     'attr' => [
                         'class' => 'password-field',
@@ -70,7 +70,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        'minMessage' => 'Your password should be at least {{ limit }} characters.',
                         'max' => 4096,
                     ]),
                 ],

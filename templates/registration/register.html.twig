@@ -6,19 +6,27 @@
 {% endblock %}
 
 {% block body %}
+
     <img class = "logo" src = "{{ asset('images/logo.png') }}"/>
 
     <div class = "d-flex flex-column justify-content-center align-content-center register">
 
         {{ form_start(registrationForm) }}
+
             {{ form_row(registrationForm.username) }}
+            
             {{ form_row(registrationForm.email) }}
+
             {{ form_row(registrationForm.password.first) }}
+
             {{ form_row(registrationForm.password.second) }}
+
             <div class = "info">If you register here, you will accept our terms and conditions,
             but we don´t have that, so you can give us your soul ♥. 
             </div>
+
             <button type = "submit">Register</button>
+
         {{ form_end(registrationForm) }}
 
         <div class = "d-flex justify-content-center align-items-center">Login</div>

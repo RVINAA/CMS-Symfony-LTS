@@ -1,9 +1,11 @@
-<p>
-    To reset your password, please visit
-    <a href="{{ url('app_reset_password', {token: resetToken.token}) }}">here</a>
-    This link will expire in {{ tokenLifetime|date('g') }} hour(s)..
-</p>
+<h1>Reset your password</h1>
 
-<p>
-    Please, no reply this :)
-</p>
+<h3>
+    Tap the link below to reset your customer account password.
+</h3>
+
+<h5>
+    If you didn't request a new password, you can safely delete this email.
+</h5>
+
+<a href="{{ url('app_reset_password', {token: resetToken.token}) }}">Change your password</a>
