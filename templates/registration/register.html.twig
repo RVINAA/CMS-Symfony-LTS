@@ -6,6 +6,8 @@
 {% endblock %}
 
 {% block body %}
+    <img class = "logo" src = "{{ asset('images/logo.png') }}"/>
+
     <div class = "d-flex flex-column justify-content-center align-content-center register">
 
         {{ form_start(registrationForm) }}
@@ -20,12 +22,19 @@
         {{ form_end(registrationForm) }}
 
         <div class = "d-flex justify-content-center align-items-center">Login</div>
+
     </div>
+    
 {% endblock %}
 
 {% block javascripts %}
 
     <script type = "text/javascript">
+
+        document.querySelector('.logo').addEventListener('click', () => {
+            window.location.href = "{{ path('welcome') }}";
+            return false;
+        });
 
         document.querySelector('.register > div').addEventListener('click', () => {
             window.location.href = "{{ path('app_login') }}";

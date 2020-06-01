@@ -7,6 +7,8 @@
 
 {% block body %}
 
+    <img class = "logo" src = "{{ asset('images/logo.png') }}"/>
+
     <div class = "d-flex flex-column justify-content-center align-content-center register">
 
         {{ form_start(requestForm) }}
@@ -26,5 +28,18 @@
         {{ form_end(requestForm) }}
 
     </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script type = "text/javascript">
+
+        document.querySelector('.logo').addEventListener('click', () => {
+            window.location.href = "{{ path('welcome') }}";
+            return false;
+        });
+
+    </script>
 
 {% endblock %}

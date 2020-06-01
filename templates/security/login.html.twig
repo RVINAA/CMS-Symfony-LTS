@@ -7,6 +7,8 @@
 
 {% block body %}
 
+    <img class = "logo" src = "{{ asset('images/logo.png') }}"/>
+
     <div class = "d-flex flex-column justify-content-center align-content-center login">
 
         <form method = "post">
@@ -25,7 +27,7 @@
 
             <input type = "hidden" name = "_csrf_token" value = "{{ csrf_token('authenticate') }}">
 
-            <label class="d-flex"><input type = "checkbox" name = "_remember_me"> Remember me</label>
+            <label class="d-flex align-items-center"><input type = "checkbox" name = "_remember_me"> Remember me</label>
 
             <button type = "submit">Sign in</button>
         </form>
@@ -39,6 +41,11 @@
 {% block javascripts %}
 
     <script type = "text/javascript">
+
+        document.querySelector('.logo').addEventListener('click', () => {
+            window.location.href = "{{ path('welcome') }}";
+            return false;
+        });
 
         document.querySelector('.login > div').addEventListener('click', () => {
             window.location.href = "{{ path('app_register') }}";
