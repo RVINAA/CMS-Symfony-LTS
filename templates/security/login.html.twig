@@ -17,7 +17,10 @@
 
             <label for = "inputUsername">Username</label>
             <input type = "text" value = "{{ last_username }}" name = "username" id = "inputUsername" class = "form-control" required autofocus>
+            
             <label for = "inputPassword">Password</label>
+            <a href = "{{ path('app_forgot_password_request') }}">Forgot password?</a>
+
             <input type = "password" name = "password" id = "inputPassword" class = "form-control" required>
 
             <input type = "hidden" name = "_csrf_token" value = "{{ csrf_token('authenticate') }}">

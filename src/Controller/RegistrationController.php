@@ -27,7 +27,10 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
+            $user->setUsername(
+                $form->get('username')->getData()
+            );
+
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,
@@ -35,11 +38,13 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            $user->setEmail(
+                $form->get('email')->getData()
+            );
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
-
-            // do anything else you need here, like send an email
 
             return $guardHandler->authenticateUserAndHandleSuccess(
                 $user,

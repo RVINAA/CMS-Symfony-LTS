@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href = "{{ asset('css/register.css') }}" type = "text/css" rel = "stylesheet" />
+{% endblock %}
+
+{% block body %}
+
+    <div class = "d-flex flex-column justify-content-center align-content-center register">
+
+        {{ form_start(requestForm) }}
+        
+            {% for flashError in app.flashes('reset_password_error') %}
+                <div class="alert alert-danger">{{ flashError }}</div>
+            {% endfor %}
+
+            {{ form_row(requestForm.email) }}
+
+            <div class = "info">
+                We will send you a link to reset your password to your email. Maybe you should look your spam folder.
+            </div>
+
+            <button type = "submit">Reset password</button>
+
+        {{ form_end(requestForm) }}
+
+    </div>
+
+{% endblock %}

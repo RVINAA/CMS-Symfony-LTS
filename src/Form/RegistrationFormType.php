@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -21,20 +22,28 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('username', TextType::class, [
                 'required' => true,
-                'mapped' => false,
+                'mapped' => true,
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter an user.',
+                        'message' => 'Please enter an username.',
                     ]),
                     new Length([
                         'min' => 3,
-                        'minMessage' => 'Your username should be at least {{ limit }} characters',
-                        // max length allowed by Symfony for security reasons
+                        'minMessage' => 'Username should be at least {{ limit }} characters.',
                         'max' => 10,
+                        'maxMessage' => 'Username must have a maximum of {{ limit }} characters.',
                     ]),
                 ],
             ])
-            ->add('email')
+            ->add('email', EmailType::class, [
+                'required' => true,
+                'mapped' => true,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Please enter an email.',
+                    ]),
+                ],
+            ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'The password fields must match',
@@ -50,7 +59,6 @@ class RegistrationFormType extends AbstractType
                     new Length([
                         'min' => 6,
                         'minMessage' => 'Your password should be at least {{ limit }} characters',
-                        // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
                 ],
@@ -61,6 +69,7 @@ class RegistrationFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Player::class,
+            'cascade_validation' => true,
         ]);
     }
 }
