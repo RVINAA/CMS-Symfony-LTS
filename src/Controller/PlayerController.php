@@ -8,16 +8,16 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class PlayerController extends AbstractController
-{
+{    
     /**
-     * @Route("/", name="welcome")
-     */
-    public function index()
+    * @Route("/settings", name="settings")
+    */
+    public function userSettings() 
     {
-        if ($this->getUser()) {
-            return $this->redirectToRoute('games');
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('welcome');
         }
 
-        return $this->render('player/welcome.html.twig', []);
+        
     }
 }

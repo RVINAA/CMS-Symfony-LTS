@@ -12,6 +12,18 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class LoginController extends AbstractController
 {
     /**
+     * @Route("/", name="welcome")
+     */
+    public function index()
+    {
+        if ($this->getUser()) {
+            return $this->redirectToRoute('games');
+        }
+
+        return $this->render('security/welcome.html.twig', []);
+    }
+
+    /**
      * @Route("/login", name="app_login")
      * @Security("is_granted('IS_AUTHENTICATED_ANONYMOUSLY') and !is_granted('ROLE_USER')")
      */
