@@ -42,8 +42,8 @@ body {
 
 .login > form {
     background-color: white;
-    border-radius: 3px;
     border: 1px solid white;
+    border-radius: 3px;
     padding: 20px;
 }
 

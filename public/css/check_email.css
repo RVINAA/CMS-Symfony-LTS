@@ -1,0 +1,50 @@
+@import 'bounce-effects.css';
+
+.alert {
+    animation: bounceIn 0.75s;
+}
+
+* {
+    user-select: none;
+    padding: 0;
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: #212027;
+    background-image: url("../images/welcome.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
+/* Check_Email */
+
+.logo {
+    display: block;
+    margin: auto;
+}
+
+.checkemail {
+    margin: 0 auto;
+}
+
+.checkemail > div {
+    background-color: white;
+    border: 1px solid white;
+    text-align: center;
+    border-radius: 3px;
+    max-width: 430px;
+    padding: 20px;
+    margin: 20px;
+}
+
+.checkemail > div > p {
+    margin-bottom: 0;
+}

@@ -1,12 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Reset your password{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href = "{{ asset('css/register.css') }}" type = "text/css" rel = "stylesheet" />
+{% endblock %}
 
 {% block body %}
-    <h1>Reset your password</h1>
 
-    {{ form_start(resetForm) }}
-        {{ form_row(resetForm.plainPassword) }}
-        <button class="btn btn-primary">Reset password</button>
-    {{ form_end(resetForm) }}
+    <img class = "logo" src = "{{ asset('images/logo.png') }}"/>
+
+    <div class = "d-flex flex-column justify-content-center align-content-center register">
+
+        {{ form_start(resetForm) }}
+
+            {{ form_row(resetForm.plainPassword) }}
+
+            <button type = "submit">Reset password</button>
+
+        {{ form_end(resetForm) }}
+
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script type = "text/javascript">
+
+        document.querySelector('.logo').addEventListener('click', () => {
+            window.location.href = "{{ path('welcome') }}";
+            return false;
+        });
+
+    </script>
+
 {% endblock %}

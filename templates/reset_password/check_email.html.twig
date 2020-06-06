@@ -1,8 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Password Reset Email Sent{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href = "{{ asset('css/check_email.css') }}" type = "text/css" rel = "stylesheet" />
+{% endblock %}
 
 {% block body %}
-    <p>An email has been sent that contains a link that you can click to reset your password. This link will expire in {{ tokenLifetime|date('g') }} hour(s).</p>
-    <p>If you don't receive an email please check your spam folder or <a href="{{ path('app_forgot_password_request') }}">try again</a>.</p>
+
+    <img class = "logo" src = "{{ asset('images/logo.png') }}"/>
+
+    <div class = "d-flex flex-column justify-content-center align-items-center align-content-center checkemail">
+        <div>
+            <div class = "alert alert-danger">An email maybe has been sent that contains a link that you can click to reset your password.</div>
+            <p>This link will expire in {{ tokenLifetime|date('g') }} hour(s).</p>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script type = "text/javascript">
+
+        document.querySelector('.logo').addEventListener('click', () => {
+            window.location.href = "{{ path('welcome') }}";
+            return false;
+        });
+
+    </script>
+
 {% endblock %}
