@@ -25,6 +25,10 @@ class PlayerController extends AbstractController
     */
     public function userSettings(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('welcome');
+        }
+
         $user = new Player();
         
         $usernameForm = $this->createForm(ChangeUserSettingsType::class, $user);

@@ -126,6 +126,7 @@ body {
 
 section {
     background-color: lightgreen;
+    animation: bounceIn 0.75s;
     border: 1px solid green;
     transition: all 300ms;
     text-align: center;
