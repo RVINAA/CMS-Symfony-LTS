@@ -1,14 +1,9 @@
+@import 'stars.css';
+
 * {
     user-select: none;
     padding: 0;
     margin: 0;
-}
-
-body {
-    background-image: url("../images/machines2.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
 }
 
 .listado  {
@@ -67,4 +62,42 @@ body {
 
 .row + .row {
     margin-top: 10px;
+}
+
+.buttons {
+    max-width: 800px;
+    padding: 10px;
+    margin: auto;
+}
+
+.buttons > div {
+    font-family: 'Courier New', Courier, monospace;
+    transition: all 600ms;
+    text-align: center;
+    border-radius: 3px;
+    border: 1px solid;
+    font-size: 1.2em;
+    flex: 1 1;
+}
+
+.buttons > div:first-of-type {
+    border-color: white;
+    margin-right: 5px;
+    color: white;
+}
+
+.buttons > div:last-of-type {
+    border-color: red;
+    margin-left: 5px;
+    color: red;
+}
+
+.buttons > div:first-of-type:hover {
+    background-color: white;
+    color: black;
+}
+
+.buttons > div:last-of-type:hover {
+    background-color: red;
+    color: black;
 }

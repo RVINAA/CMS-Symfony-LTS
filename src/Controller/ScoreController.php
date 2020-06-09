@@ -79,6 +79,7 @@ class ScoreController extends AbstractController
 
         return $this->render('score/index.html.twig', [
             'allScores' => $allScores,
+            'slug' => $oneGame->getSlug()
         ]);
     }
 }
