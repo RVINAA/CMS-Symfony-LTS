@@ -27,7 +27,6 @@ class ChangeEmailSettingsType extends AbstractType
                     'class' => 'form-control',
                 ],
             ])
-            ->add('save', SubmitType::class)
         ;
     }
 
@@ -35,6 +34,7 @@ class ChangeEmailSettingsType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Player::class,
+            'cascade_validation' => true,
         ]);
     }
 }

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href = "{{ asset('css/register.css') }}" type = "text/css" rel = "stylesheet" />
+    <link href = "{{ asset('css/menu.css') }}" type = "text/css" rel = "stylesheet" />
+{% endblock %}
+
+{% block body %}
+
+    {% include 'menu.html' %}
+ 
+    <div class = "d-flex flex-column justify-content-center align-content-center register">
+
+        {% if message is not null %}
+            <section>{{ message }}</section>
+        {% endif %}
+
+        {{ form_start(usernameForm, {'attr': {'class': 'settings'}}) }}
+
+            {{ form_row(usernameForm.username) }}
+
+            <button type = "submit">Save</button>
+
+        {{ form_end(usernameForm) }}
+
+        {{ form_start(emailForm) }}
+
+            {{ form_row(emailForm.email) }}
+
+            <button type = "submit">Save</button>
+
+        {{ form_end(emailForm) }}
+    </div>
+
+{% endblock %}

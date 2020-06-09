@@ -10,28 +10,23 @@ use App\Form\DeleteAccountSettingsType;
 use App\Form\RegistrationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
+
 
 class PlayerController extends AbstractController
 {
     /**
-     * @var Security
-     */
-    private $security;
-
-    public function __construct(Security $security)
-    {
-        $this->security = $security;
-    }
-    /**
     * @Route("/settings", name="settings")
     */
-    public function userSettings(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    public function userSettings(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
-        $user = $this->getUser();
+        $user = new Player();
+        
         $usernameForm = $this->createForm(ChangeUserSettingsType::class, $user);
         $usernameForm->handleRequest($request);
 
@@ -43,17 +38,24 @@ class PlayerController extends AbstractController
 
         /*$deleteForm = $this->createForm(DeleteAccountSettingsType::class, $user);
         $deleteForm->handleRequest($request);*/
+        
+        $message = null;
 
+        $user = $this->getUser();
         if ($usernameForm->isSubmitted() && $usernameForm->isValid()) {
             $user->setUsername(
                 $usernameForm->get('username')->getData()
             );
+
+            $message = "Username changed, you will login with it.";
         }
 
         if ($emailForm->isSubmitted() && $emailForm->isValid()) {
             $user->setEmail(
                 $emailForm->get('email')->getData()
             );
+
+            $message = "New e-mail direction saved.";
         }
 
         if ($passwordForm->isSubmitted() && $passwordForm->isValid()) {
@@ -63,6 +65,8 @@ class PlayerController extends AbstractController
                     $passwordForm->get('plainPassword')->getData()
                 )
             );
+
+            $message = "Password changed, don´t forget it.";
         }
         /*
         if ($deleteForm->isSubmitted() && $form4->isValid()) {
@@ -75,11 +79,12 @@ class PlayerController extends AbstractController
         $entityManager->persist($user);
         $entityManager->flush();
 
-        return $this->render('settings/settings.html.twig', [
-            'username' => $usernameForm->createView(),
-            'email' => $emailForm->createView(),
-            'password' => $passwordForm->createView(),
+        return $this->render('player/settings.html.twig', [
+            'usernameForm' => $usernameForm->createView(),
+            'emailForm' => $emailForm->createView(),
+            'passwordForm' => $passwordForm->createView(),
             //'delete' => $deleteForm->createView(),
+            'message' => $message
         ]);
     }
 }
