@@ -24,13 +24,23 @@
 
         {{ form_end(usernameForm) }}
 
-        {{ form_start(emailForm) }}
+        {{ form_start(emailForm, {'attr': {'class': 'settings'}}) }}
 
             {{ form_row(emailForm.email) }}
 
             <button type = "submit">Save</button>
 
         {{ form_end(emailForm) }}
+
+        {{ form_start(passwordForm, {'attr': {'class': 'settings'}}) }}
+
+            {{ form_row(passwordForm.password) }}
+            {{ form_row(passwordForm.password) }}
+
+            <button type = "submit">Save</button>
+
+        {{ form_end(passwordForm) }}
+
     </div>
 
 {% endblock %}

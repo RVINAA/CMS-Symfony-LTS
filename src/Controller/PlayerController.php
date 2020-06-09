@@ -62,7 +62,7 @@ class PlayerController extends AbstractController
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,
-                    $passwordForm->get('plainPassword')->getData()
+                    $passwordForm->get('password')->getData()
                 )
             );
 

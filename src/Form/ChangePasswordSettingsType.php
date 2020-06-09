@@ -17,7 +17,7 @@ class ChangePasswordSettingsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('plainPassword', RepeatedType::class, [
+            ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'first_options' => [
                     'constraints' => [
@@ -30,17 +30,24 @@ class ChangePasswordSettingsType extends AbstractType
                             'max' => 4096,
                         ]),
                     ],
+                    'attr' => [
+                        'class' => 'password-field',
+                        'class' => 'form-control'
+                    ],
                     'label' => 'New password',
                 ],
                 'second_options' => [
                     'label' => 'Repeat Password',
+                    'attr' => [
+                        'class' => 'password-field',
+                        'class' => 'form-control'
+                    ],
                 ],
                 'invalid_message' => 'The password fields must match.',
                 // Instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
             ])
-            ->add('save', SubmitType::class)
         ;
     }
 
@@ -48,6 +55,7 @@ class ChangePasswordSettingsType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Player::class,
+            'cascade_validation' => true,
         ]);
     }
 }
