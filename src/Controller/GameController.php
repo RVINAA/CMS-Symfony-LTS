@@ -58,4 +58,17 @@ class GameController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/resolutionnotsupported", name="device_resolution_not_suported")
+     */
+    public function deviceResolutionNotSupported()
+    {
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('welcome');
+        }
+
+        return $this->render('game/errorSizeGame.html.twig', []);
+    }
+
+
 }

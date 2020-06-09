@@ -16,3 +16,20 @@
     </div>
 
 {% endblock %}
+
+{% block javascripts %}
+
+    <script type = "text/javascript">
+
+        window.addEventListener('DOMContentLoaded', checkResolution);
+        window.addEventListener('resize', checkResolution);
+
+        function checkResolution () {
+            const game = document.querySelector('.container > div');
+            if (window.innerHeight < game.clientHeight || window.innerWidth < game.clientWidth) 
+                window.location.href = "{{ path('device_resolution_not_suported') }}";
+        }
+
+    </script>
+
+{% endblock %}

@@ -19,3 +19,15 @@
     </div>
   
 {% endblock %}
+
+{% block javascripts %}
+
+    <script type = "text/javascript">
+
+        setTimeout( () => {
+            window.location.href = "{{ path('games') }}";
+        }, 5000);
+
+    </script>
+
+{% endblock %}

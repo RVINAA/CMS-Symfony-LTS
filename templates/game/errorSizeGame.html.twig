@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href = "{{ asset('css/error.css') }}" type = "text/css" rel = "stylesheet" />
+    <link href = "{{ asset('css/menu.css') }}" type = "text/css" rel = "stylesheet" />
+{% endblock %}
+
+{% block body %}
+    {% include 'menu.html' %}
+
+    <div class = "stars"></div>
+    <div class = "stars2"></div>
+    <div class = "stars3"></div>
+
+    <div class = "error d-flex flex-column">
+        <p>The game cannot be played at the current browser resolution. Please, don´t resize your nav or try with other device.</p>
+        <img src = "{{ asset( 'images/sorry.gif' ) }}"/>
+    </div>
+  
+{% endblock %}
+
+{% block javascripts %}
+
+    <script type = "text/javascript">
+
+        setTimeout( () => {
+            window.location.href = "{{ path('games') }}";
+        }, 5000);
+
+    </script>
+
+{% endblock %}
