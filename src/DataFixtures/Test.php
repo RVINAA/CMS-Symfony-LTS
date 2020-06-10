@@ -15,8 +15,9 @@ class Test extends Fixture
         // Test user.
         $users = [
             ['SIGMA[!]', '1234', ['ROLE_ADMIN'], 'lascortinashuelenaporro@gmail.com'],
-            ['admin', '1234', ['ROLE_ADMIN'], 'admin@admin.es'],
-            ['user', '1234', ['ROLE_USER'], 'user@user.es']
+            ['Nayem', '1234', ['ROLE_ADMIN'], 'nayemms@gmail.com'],
+            ['Kevin', '1234', ['ROLE_ADMIN'], 'kevinguzman0816@gmail.com'],
+            ['Testator', '1234', ['ROLE_USER'], 'test@xyz.com'],
         ];
 
         foreach ($users as $data) {
@@ -31,7 +32,7 @@ class Test extends Fixture
         // Games por testing.
         $games = [
             ['Tetris JS', 'games/tetris-js/img/tetris.jpg'],
-            // Second game...
+            ['Operators Match', 'games/operators-match/img/cardMatch.jpg'],
         ];
         
         foreach ($games as $data) {
@@ -40,22 +41,6 @@ class Test extends Fixture
             $game->setImg($data[1]);
             $manager->persist($game);
         }
-
-        /*
-        // Scores for testing Tetris.
-        $scores = [
-            ['Tetris JS', 'SIGMA[!]', '420'],
-            ['Tetris JS', 'SIGMA[!]', '160458'],
-            ['Tetris JS', 'SIGMA[!]', '43146']
-        ];
-
-        foreach ($scores as $data) {
-            $score = new Score();
-            $score->setGame($data[0]);
-            $score->setPlayer($data[1]);
-            $score->setScore($data[2]);
-            $manager->persist($score);
-        } */
 
         $manager->flush();
     }
