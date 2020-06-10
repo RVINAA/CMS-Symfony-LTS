@@ -34,6 +34,8 @@ class Test extends Fixture
             ['Tetris JS', 'games/tetris-js/img/tetris.jpg'],
             ['Operators Match', 'games/operators-match/img/cardMatch.jpg'],
             ['Bomberman', 'games/bomberman/img/bomberman.jpeg'],
+            ['Pong JS', 'games/pong-js/img/pong.jpg'],
+            ['Snake JS', 'games/snake-js/img/snake.jpg'],
         ];
         
         foreach ($games as $data) {
