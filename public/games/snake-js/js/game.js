@@ -25,15 +25,15 @@ const COLORES = {
     Gris: '#D3D3D3'
 }
 
-const FPS = 8;
-
-let Sanke = {
+const FPS = 10;
+let bucle;
+let Snake = {
     new: function () {
 		return {
             cola:[],
             tamaño: 1,
             direccion: DIRECCION.Defecto,
-            moverX: 0,
+            moverX: 1,
             moverY: 0,
             x: 10,
             y: 10,
@@ -56,7 +56,7 @@ let Juego = {
         this.canvas = document.querySelector('canvas');
         this.context = this.canvas.getContext('2d');
         
-        this.snake = Sanke.new.call(this);
+        this.snake = Snake.new.call(this);
         this.manzana = Manzana.new.call(this);
 
         this.enCurso = false;
@@ -108,7 +108,8 @@ let Juego = {
 		this.context.fillText(texto,
 			200,
 			200
-		);
+        );
+
         // enviar puntuacion AJAX
         Juego.sendScoreAJAX(this.snake.puntuacion);
         
@@ -119,7 +120,9 @@ let Juego = {
         Juego.pintarUpdate();
 
         if(Juego.fin) {
+            clearInterval(bucle);
             setTimeout(Juego.menuFin(), 1000);
+            
         }
     },
     
@@ -129,7 +132,9 @@ let Juego = {
             // Para el menu al principio del juego
             if (Juego.enCurso === false) {
                 Juego.enCurso = true;
-                if(!Juego.fin) setInterval(Juego.loop, 1000 / FPS);
+                if(!Juego.fin) {
+                    bucle = setInterval(Juego.loop, 1000 / FPS);
+                }
             }
             
             // fecha arriba / W

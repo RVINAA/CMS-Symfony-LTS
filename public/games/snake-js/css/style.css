@@ -1,5 +1,9 @@
 #puntuacion {
     font-family: 'Courier New', Courier, monospace;
+    background-color: #212027;
+    text-align: center;
+    border: 2px solid black;
+    border-bottom: none;
 }
 canvas {
     border: 2px black solid;
