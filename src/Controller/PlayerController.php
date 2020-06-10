@@ -3,19 +3,23 @@
 namespace App\Controller;
 
 use App\Entity\Player;
-use App\Form\ChangeEmailSettingsType;
-use App\Form\ChangePasswordSettingsType;
-use App\Form\ChangeUserSettingsType;
-use App\Form\DeleteAccountSettingsType;
-use App\Form\RegistrationFormType;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 
-use Symfony\Component\Security\Core\Security;
+use App\Form\ChangePasswordSettingsType;
+use App\Form\DeleteAccountSettingsType;
+use App\Form\ChangeEmailSettingsType;
+use App\Form\ChangeUserSettingsType;
+use App\Form\RegistrationFormType;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
+use Symfony\Component\Security\Core\Security;
+
+use Symfony\Component\HttpFoundation\Session\Session;
 
 
 class PlayerController extends AbstractController
@@ -40,9 +44,6 @@ class PlayerController extends AbstractController
         $passwordForm = $this->createForm(ChangePasswordSettingsType::class, $user);
         $passwordForm->handleRequest($request);
 
-        /*$deleteForm = $this->createForm(DeleteAccountSettingsType::class, $user);
-        $deleteForm->handleRequest($request);*/
-        
         $message = null;
 
         $user = $this->getUser();
@@ -72,12 +73,6 @@ class PlayerController extends AbstractController
 
             $message = "Password changed, don´t forget it.";
         }
-        /*
-        if ($deleteForm->isSubmitted() && $form4->isValid()) {
-            $user->setUsername(
-                $deleteForm->get('username')->getData()
-            );
-        }*/
 
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($user);
@@ -87,8 +82,29 @@ class PlayerController extends AbstractController
             'usernameForm' => $usernameForm->createView(),
             'emailForm' => $emailForm->createView(),
             'passwordForm' => $passwordForm->createView(),
-            //'delete' => $deleteForm->createView(),
             'message' => $message
         ]);
+    }
+
+    /**
+    * @Route("/delete", name="delete_account")
+    */
+    public function deleteAccount()
+    {
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('welcome');
+        }
+
+        $user = $this->getUser();
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($user);
+        $entityManager->flush();
+
+        $session = $this->get('session');
+        $session = new Session();
+        $session->invalidate();
+
+        return $this->redirectToRoute('welcome');
     }
 }
