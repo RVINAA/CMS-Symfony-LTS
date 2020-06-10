@@ -1,0 +1,1 @@
+sudo mysql < ../src/script.sql
