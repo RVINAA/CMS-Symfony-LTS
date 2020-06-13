@@ -28,10 +28,18 @@ class ChangePasswordFormType extends AbstractType
                             'max' => 4096,
                         ]),
                     ],
+                    'attr' => [
+                        'class' => 'form-control',
+                        'autofocus' => true,
+                    ],
                     'label' => 'New password',
                 ],
                 'second_options' => [
                     'label' => 'Repeat Password',
+                    'attr' => [
+                        'class' => 'form-control',
+                        'autofocus' => true,
+                    ],
                 ],
                 'invalid_message' => 'The password fields must match.',
                 // Instead of being set onto the object directly,
